@@ -95,7 +95,7 @@ rope_dict = {6: """
 
 # Create a list of the words that are in words.txt
 words_list = []
-with open('words_hard.txt', 'r') as txt:
+with open('hard_words.txt', 'r') as txt:
     for w in txt:
         words_list.append(w.strip())
 
