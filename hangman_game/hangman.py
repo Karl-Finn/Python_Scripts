@@ -111,16 +111,16 @@ for word in words_list:
         num += 1
 
 # Initialize Variables needed for the game logic
-hangman_word = words_dict[random.randint(1, len(words_list))]
+hangman_word = words_dict[random.randint(1, len(words_list))] # the word the player will be guessing
 
-guessed_word_str = "*" * len(hangman_word)
-
+# * in place of letters in hangman_word; correctly guessed letters will replace stars
+guessed_word_str = "*" * len(hangman_word) 
 guessed_word_list = [i for i in guessed_word_str]
 
 num_guesses = 6
 
 wrong_letters = ''
-print(hangman_word)
+#print(hangman_word) # Uncomment to test code
 
 
 # Game Logic
@@ -143,9 +143,9 @@ while guessed_word_str != hangman_word:
         elif guessed_letter in hangman_word:
             for index, letter in enumerate(hangman_word):
                 if letter == guessed_letter:
-                    guessed_word_list[index] = guessed_letter
+                    guessed_word_list[index] = guessed_letter # replace a star with the correctly guessed letter
                     guessed_word_str = ''
-                    for e in guessed_word_list:
+                    for e in guessed_word_list: # new string with the correctly guessed letter in place of star
                         guessed_word_str += e
         # if the guessed letter is not in the hangman word but has already been guessed previously
         elif guessed_letter in wrong_letters:
