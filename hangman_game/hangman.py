@@ -9,7 +9,7 @@ Note: the word list used in this program was obtained from http://wordlist.sourc
 
 import random
 
-rope_dict = {6: """
+character_dict = {6: """
     _______________
     |              |
     |
@@ -111,23 +111,23 @@ for word in words_list:
         num += 1
 
 # Initialize Variables needed for the game logic
-hangman_word = words_dict[random.randint(1, len(words_list))] # the word the player will be guessing
+hangman_word = words_dict[random.randint(1, len(words_list))]
 
 # * in place of letters in hangman_word; correctly guessed letters will replace stars
-guessed_word_str = "*" * len(hangman_word) 
+guessed_word_str = "*" * len(hangman_word)
 guessed_word_list = [i for i in guessed_word_str]
 
 num_guesses = 6
 
 wrong_letters = ''
-#print(hangman_word) # Uncomment to test code
+print(hangman_word)
 
 
 # Game Logic
 while guessed_word_str != hangman_word:
     if num_guesses > 0:
         print(f"Guesses remaining: {num_guesses}")
-        print(rope_dict[num_guesses])
+        print(character_dict[num_guesses])
         print(f"Word: {guessed_word_str}")
         print(f"Wrong letters guessed: {wrong_letters}")
 
@@ -138,6 +138,10 @@ while guessed_word_str != hangman_word:
         # Check if the guess was an alphabetic character
         if not guessed_letter.isalpha():
             print(f"You guessed: {guessed_letter}\nPlease enter only letters.")
+
+        # Check if more than one letter was entered
+        elif len(guessed_letter) > 1:
+            print(f"You guessed: {guessed_letter}\nPlease enter only one letter.")
 
         # if the guessed letter is in the hangman word
         elif guessed_letter in hangman_word:
@@ -157,8 +161,10 @@ while guessed_word_str != hangman_word:
             num_guesses -= 1
     else:  # Runs if there are no guesses left for the player
         print("GAME OVER!")
-        print(rope_dict[num_guesses])
+        print(character_dict[num_guesses])
         print(f"The word was: {hangman_word}")
         break
 else:  # runs if and when the 'while' is False
-    print("YOU WIN!")
+    print("CONGRATULATIONS! YOU WIN!")
+    print(f"The Hangman's word was: {hangman_word}")
+    print(f"Your guess was: {guessed_word_str}")
