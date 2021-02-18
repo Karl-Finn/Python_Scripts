@@ -1,7 +1,6 @@
 """
 Author: Karl Finnerty
 Date: 20 November 2019
-e-mail: karlfinnerty@protonmail.ch
 
 Note: the word list used in this program was obtained from http://wordlist.sourceforge.net/ with credit to
       its creator/s
